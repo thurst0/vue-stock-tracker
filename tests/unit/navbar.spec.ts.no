@@ -1,0 +1,18 @@
+import faker from 'faker';
+import { shallowMount } from '@vue/test-utils';
+import NavBar from '@/components/NavBar.vue';
+
+describe('NavBar.vue', () => {
+  let wrapper: any;
+  const msg = faker.random.words();
+  beforeEach(() => {
+    wrapper = shallowMount(NavBar, {
+      propsData: { msg },
+    });
+  });
+
+  it('renders props.msg when passed', () => {
+    expect(wrapper.vm.msg).toEqual(msg);
+    expect(wrapper.find('h1').text()).toBe(msg);
+  });
+});
